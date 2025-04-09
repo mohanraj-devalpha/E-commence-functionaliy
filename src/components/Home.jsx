@@ -54,8 +54,8 @@ const Home = () => {
           <img src={item1} alt="" className="absolute z-10  left-36 w-52 h-52" />
           <img src={item8} alt="" className="absolute z-10 top-72 left-72 w-52 h-52 shadow-2xl"/>
           <img src={item5} alt="" className="absolute z-10 top-96 left-[600px] w-52 h-52"/>
-          <img src={item2} alt=""  className="absolute z-20 top-72 right-72 w-52 h-52 shadow-2xl"/>
-          <img src={item6} alt="" className="absolute z-10 top-40 right-36 w-52 h-52" />
+          <img src={item2} alt=""  className="absolute z-[15px] top-72 right-72 w-52 h-52 "/>
+          <img src={item6} alt="" className="absolute z-10 top-40 right-36 w-52 h-52  shadow-2xl" />
         </div>
        
         
