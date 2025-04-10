@@ -63,7 +63,6 @@ const Collection = () => {
               />
             </li>
             <li>
-              <li>
                 <select
                   value={priceFilter}
                   onChange={(e) => setPriceFilter(e.target.value)}
@@ -74,7 +73,6 @@ const Collection = () => {
                   <option value="100-200">$100 - $200</option>
                   <option value="200-300">$200 - $300</option>
                 </select>
-              </li>
             </li>
             <li>
               <input

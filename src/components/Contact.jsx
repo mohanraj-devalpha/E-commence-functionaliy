@@ -22,7 +22,7 @@ const Contact = () => {
         </div>
       </div>
       <div className="absolute top-[410px] md:top-[360px] left-0 w-full flex flex-col justify-center items-center py-10">
-        <div className="space-y-3 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl px-4">
+        <div className="space-y-5 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl px-4">
           <input
             type="text"
             placeholder="Email"

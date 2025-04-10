@@ -56,11 +56,7 @@ const Items = () => {
   const [color, setColor] = useState("");
 
   const handleAddToCart = () => {
-    if (!color) {
-      alert("Please select a color");
-      return;
-    }
-
+    
     const cartItem = {
       img,
       title,
@@ -202,11 +198,11 @@ const Items = () => {
           {/* Info Row */}
           <div className="flex flex-col sm:flex-row sm:space-x-10 space-y-4 sm:space-y-0 text-color">
             <div className="flex space-x-3 items-center text-sm sm:text-base">
-              <CiCreditCard1 />
+              <CiCreditCard1 className="mt-1 text-lg text-black"/>
               <p>Pay in 21 days</p>
             </div>
-            <div className="flex space-x-3 items-center text-sm sm:text-base">
-              <SlReload className="rotate-180" />
+            <div className="flex space-x-3  text-sm sm:text-base">
+              <SlReload className="rotate-180 mt-1  text-black" />
               <p>30 days return policy</p>
             </div>
           </div>
@@ -241,7 +237,7 @@ const Items = () => {
         <Outlet />
       </div> */}
 
-      <div className="py-20 text-center border-t-2 pb-[600px]">
+      <div className="py-20 text-center border-t-2 md:pb-[600px]">
         <span className="text-3xl md:text-7xl font-cormorant ">
           Popular Collection
         </span>

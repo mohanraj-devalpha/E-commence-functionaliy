@@ -62,7 +62,7 @@ const Cart = () => {
           </button>
         </div>
 
-        {cartItems.map((item, index) => (
+        {[...cartItems].reverse().map((item, index) => (
           <div
             key={index}
             className="flex flex-col lg:flex-row justify-between gap-6 p-6 border-b"
