@@ -1,10 +1,23 @@
 import React from "react";
 import Layout from "./Layout";
+import { useForm } from "react-hook-form";
+
+// import {useForm} from "react-hook-form"
 
 const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+  // const {register ,handleSubmit}=useForm()
   return (
     <Layout>
-      <div className="bg-slate-100 text-center space-y-5 py-10 mb-[680px]">
+      <div className="bg-slate-100 text-center space-y-5 py-10 mb-[1000px] md:mb-[800px]">
         <div>{/* <img src={} alt="" /> */}</div>
         <div>
           <span className="text-7xl font-cormorant">Contact Us</span>
@@ -21,65 +34,117 @@ const Contact = () => {
           <span>Lancaster, PA 17603 (by appointment only)</span>
         </div>
       </div>
-      <div className="absolute top-[410px] md:top-[360px] left-0 w-full flex flex-col justify-center items-center py-10">
+      {/* <form onSubmit={handleSubmit(onSubmit)} > */}
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="absolute top-[560px] md:top-[360px] left-0 w-full flex flex-col justify-center items-center py-10 px-10"
+      >
         <div className="space-y-5 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl px-4">
           <input
-            type="text"
+            type="email"
             placeholder="Email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: "Invalid email format",
+              },
+            })}
             className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
           />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
+
           <div className="flex flex-col sm:flex-row sm:space-x-3 space-y-3 sm:space-y-0">
-            <input
-              type="text"
-              placeholder="First name"
-              className="border-2 rounded-lg w-full sm:w-1/2 p-2 hover:border-blue-500"
-            />
-            <input
-              type="text"
-              placeholder="Last name"
-              className="border-2 rounded-lg w-full sm:w-1/2 p-2 hover:border-blue-500"
-            />
+            <div className="w-full sm:w-1/2">
+              <input
+                type="text"
+                placeholder="First name"
+                {...register("firstName", {
+                  required: "First name is required",
+                })}
+                className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
+              />
+              {errors.firstName && (
+                <p className="text-red-500 text-sm">
+                  {errors.firstName.message}
+                </p>
+              )}
+            </div>
+            <div className="w-full sm:w-1/2">
+              <input
+                type="text"
+                placeholder="Last name"
+                {...register("lastName", { required: "Last name is required" })}
+                className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
+              />
+              {errors.lastName && (
+                <p className="text-red-500 text-sm">
+                  {errors.lastName.message}
+                </p>
+              )}
+            </div>
           </div>
 
           <input
             type="text"
             placeholder="Address"
+            {...register("address", { required: "Address is required" })}
             className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
           />
+          {errors.address && (
+            <p className="text-red-500 text-sm">{errors.address.message}</p>
+          )}
+
           <input
             type="text"
             placeholder="Product/Order inquiry"
             className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
           />
+          {errors.inquiry && (
+            <p className="text-red-500 text-sm">{errors.inquiry.message}</p>
+          )}
+
           <input
             type="text"
-            placeholder="Address"
+            placeholder="Additional Address"
+            {...register("additionalAddress")}
             className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
           />
+
           <div className="flex flex-col sm:flex-row sm:space-x-3 space-y-3 sm:space-y-0">
             <input
               type="text"
               placeholder="Mobile Phone (optional)"
+              {...register("mobile")}
               className="border-2 rounded-lg w-full sm:w-1/2 p-2 hover:border-blue-500"
             />
             <input
               type="text"
               placeholder="Phone (optional)"
+              {...register("phone")}
               className="border-2 rounded-lg w-full sm:w-1/2 p-2 hover:border-blue-500"
             />
           </div>
 
-          <input
-            type="text"
+          <textarea
             placeholder="Message"
             className="border-2 rounded-lg w-full p-2 pb-40 hover:border-blue-500"
           />
+          {errors.message && (
+            <p className="text-red-500 text-sm">{errors.message.message}</p>
+          )}
 
-          <button className="bg-black text-white px-10 py-3 rounded-lg hover:border-yellow-500 hover:opacity-70 w-full sm:w-auto">
+          <button
+            type="submit"
+            className="bg-black text-white px-10 py-3 rounded-lg hover:border-yellow-500 hover:opacity-70 w-full sm:w-auto"
+          >
             Send
           </button>
         </div>
-      </div>
+      </form>
+      {/* </form> */}
     </Layout>
   );
 };

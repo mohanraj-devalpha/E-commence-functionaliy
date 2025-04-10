@@ -15,6 +15,8 @@ const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, updateColor } = useCart();
   const VAT = 10.55;
 
+
+
   const subtotal = cartItems.reduce((acc, item) => {
     const itemTotal =
       parseFloat(item.price?.replace(/[^0-9.]/g, "")) * (item.quantity || 1);
@@ -22,6 +24,8 @@ const Cart = () => {
   }, 0);
 
   const total = subtotal > 0 ? (subtotal + VAT).toFixed(2) : "000.00";
+  console.log("Cart Items: ", cartItems);
+
 
   return (
     <Layout>

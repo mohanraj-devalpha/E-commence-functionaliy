@@ -41,7 +41,7 @@ const Items = () => {
   const navigate = useNavigate();
 
   // const location = useLocation();
-  const { state } = useLocation();
+  const { state, } = useLocation();
   const { img, title, price } = state || {};
 
   const { addToCart } = useCart();

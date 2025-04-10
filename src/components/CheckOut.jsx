@@ -32,9 +32,7 @@ const checkout = () => {
   return (
     <Layout>
       <div className="grid grid-cols-1 xl:grid-cols-2">
-        {/* Left Side - Form */}
         <div className="p-5 md:p-10 space-y-5">
-          {/* Breadcrumb */}
           <div className="space-x-4 text-color flex items-center text-sm sm:text-base">
             <TiHomeOutline
               onClick={() => navigate("/learn-more")}
@@ -54,7 +52,6 @@ const checkout = () => {
             </span>
           </div>
 
-          {/* Contact Form */}
           <div className="text-start space-y-4">
             <h1 className="text-2xl sm:text-3xl">Contact Information</h1>
             <input
@@ -117,24 +114,21 @@ const checkout = () => {
             </div>
           </div>
 
-          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <button className="bg-black text-white px-5 py-3 rounded-lg">
               Continue to payment
             </button>
-            <button className="text-black px-5 py-3 border rounded-lg">
+            <button onClick={()=>navigate("/Cart")} className="text-black px-5 py-3 border rounded-lg">
               Return to cart
             </button>
           </div>
         </div>
 
-        {/* Right Side - Cart Summary */}
         <div className="bg-slate-100 p-5 md:p-10">
           <div className="border-b pb-5">
             <span className="text-xl font-medium">Your cart</span>
           </div>
 
-          {/* Cart Item */}
           {cartItems.map((item, i) => (
             <div
               key={item.id || i}
@@ -143,7 +137,7 @@ const checkout = () => {
               <div className="flex gap-5">
                 <div className="w-24 h-24 rounded overflow-hidden">
                   <img
-                    src={item.image}
+                    src={item.img}
                     alt={item.title}
                     className="w-full h-full object-cover"
                   />
