@@ -1,6 +1,6 @@
 // components/NavbarIn.jsx
 import React from "react";
-import Sofa from "../assets/Sofa.jpg";
+import Sofa from "../assets/sofa.jpg";
 import persons from "../assets/persons.webp";
 import { CiSearch } from "react-icons/ci";
 import { CgSearch } from "react-icons/cg";
