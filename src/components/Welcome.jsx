@@ -12,7 +12,6 @@ import item8 from "../assets/collection_108.png";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-
 const items = [
   { id: 1, image: item3, title: "Flower Vase", price: "$29.99" },
   { id: 2, image: item4, title: "Book Self", price: "$119.99" },
@@ -25,43 +24,50 @@ const items = [
 ];
 
 const Welcome = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div>
       <div className="snap-y">
-        <div className="grid grid-cols-2 relative">
-          <div className="flex flex-cols bg-[#fdf1f0] ">
-            <div className="absolute top-28 left-28  flex flex-col w-96 space-y-10">
-              <p>Furniture Home</p>
-              <p className="font-cormorant text-9xl">Embrace Peaceful Oasis</p>
-              <p 
-              onClick={() => navigate("/learn-more")} 
-              className="bg-black text-white px-3 py-3 rounded-lg text-center h-12 w-40 flex items-center justify-center space-x-2 cursor-pointer">
-                <span >Shop Now</span>
-                <MdOutlineArrowOutward className="text-white text-xl " />
+        {/* Hero Section */}
+        <div className="grid xl:grid-cols-2 relative">
+          <div className="flex bg-[#fdf1f0] min-h-[500px]">
+            <div className="absolute top-20 sm:top-28 left-6 sm:left-10 md:left-20 xl:left-28 flex flex-col space-y-6 sm:space-y-10 max-w-xs sm:max-w-md md:max-w-lg">
+              <p className="text-sm sm:text-base">Furniture Home</p>
+              <p className="font-cormorant text-4xl sm:text-6xl xl:text-8xl leading-tight">
+                Embrace Peaceful Oasis
+              </p>
+              <p
+                onClick={() => navigate("/learn-more")}
+                className="bg-black text-white px-5 py-3 rounded-lg w-fit flex items-center space-x-2 cursor-pointer"
+              >
+                <span>Shop Now</span>
+                <MdOutlineArrowOutward className="text-white text-xl" />
               </p>
             </div>
           </div>
-          {/* <img
-            src={leaf}
-            alt=""
-            className="absolute left-[650px] z-0 -rotate-45 top-48"
-          /> */}
           <div>
-            <img src={table} alt="" className=" relative z-10" />
+            <img
+              src={table}
+              alt="table"
+              className="w-full h-full object-cover relative z-10"
+            />
           </div>
         </div>
-        <div className="py-24 px-40 text-center space-y-10">
-          <span className="text-7xl font-cormorant">What We Do</span>
-          <p className=" font-normal text-[#222222] px-36">
+
+        {/* What We Do Section */}
+        <div className="py-16 px-6 sm:px-10 md:px-20 text-center space-y-10">
+          <span className="text-4xl sm:text-5xl xl:text-7xl font-cormorant">
+            What We Do
+          </span>
+          <p className="text-sm sm:text-base font-normal text-[#222222] max-w-5xl mx-auto">
             Our Focus: Crafting Inspiring Living Spaces. At{" "}
-            <span className="font-bold"> Furniture home </span>, we're dedicated
+            <span className="font-bold">Furniture home</span>, we're dedicated
             to turning ordinary spaces into visual masterpieces. With a passion
             for design, we collaborate closely with you to bring your unique
             vision to life. From color palettes to furniture arrangement, our
             decor experts ensure each corner tells a captivating story.
           </p>
-          <p className="font-normal px-36">
+          <p className="text-sm sm:text-base font-normal max-w-4xl mx-auto">
             Whether your style is contemporary, classic, or eclectic, let us
             expertly transform your dreams into stunning reality. Discover the
             art of creating lovely environments that truly resonate and inspire,
@@ -72,88 +78,40 @@ const Welcome = () => {
             Learn More
           </button>
         </div>
-        <div className="py-5 text-center">
-          <span className="text-7xl font-cormorant ">Popular Collection</span>
 
-          <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 py-16 px-16 cursor-pointer">
-          {items.map((item) => (
+        {/* Popular Collection */}
+        <div className="py-10 text-center">
+          <span className="text-3xl sm:text-5xl md:text-6xl font-cormorant">
+            Popular Collection
+          </span>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 py-12 px-6 sm:px-10 lg:px-16">
+            {items.map((item) => (
               <div
                 key={item.id}
                 onClick={() =>
                   navigate("/Items", {
-                    state: { img: item.image, title: item.title, price: item.price },
+                    state: {
+                      img: item.image,
+                      title: item.title,
+                      price: item.price,
+                    },
                   })
                 }
-                className="flex flex-col"
+                className="flex flex-col hover:opacity-80 cursor-pointer"
               >
-                <img src={item.image} alt={item.title} />
-                <div className="flex flex-col py-8 text-lg">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full object-cover"
+                />
+                <div className="flex flex-col py-4 text-base sm:text-lg">
                   <span className="font-bold">{item.title}</span>
                   <span>{item.price}</span>
                 </div>
               </div>
             ))}
           </div>
-
-
-          {/* <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 py-16 px-16 cursor-pointer">
-            <div className="flex flex-col">
-              <img src={item3} alt="" className="" />
-              <div className="flex flex-col py-8 text-lg">
-                <span className="font-bold">Flower Vase</span>
-                <span>$29.99</span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <img src={item4} alt="" />
-              <div className="flex flex-col py-8 text-lg">
-                <span className="font-bold">Book Self</span>
-                <span>$119.99</span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <img src={item5} alt="" />
-              <div className="flex flex-col py-8 text-lg">
-                <span className="font-bold">Table Chair</span>
-                <span>$180.34</span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <img src={item6} alt="" />
-              <div className="flex flex-col py-8 text-lg">
-                <span className="font-bold">Wall Clock</span>
-                <span>$20.14</span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <img src={item2} alt="" />
-              <div className="flex flex-col py-8 text-lg">
-                <span className="font-bold">Round table</span>
-                <span>$24.99</span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <img src={item1} alt="" />
-              <div className="flex flex-col py-8 text-lg">
-                <span className="font-bold">Pottery Vase</span>
-                <span>$24.99</span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <img src={item8} alt="" />
-              <div className="flex flex-col py-8 text-lg">
-                <span className="font-bold">wooden sofa</span>
-                <span>$140.22</span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <img src={item7} alt="" />
-              <div className="flex flex-col py-8 text-lg">
-                <span className="font-bold">Black chair</span>
-                <span>$160.34</span>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

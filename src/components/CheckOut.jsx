@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "./Layout";
 import item1 from "../assets/collection_101.png";
 import item2 from "../assets/collection_102.png";
+
 import item3 from "../assets/collection_103.png";
 import item4 from "../assets/collection_104.png";
 import item5 from "../assets/collection_105.png";
@@ -9,21 +10,25 @@ import item6 from "../assets/collection_106.png";
 import item7 from "../assets/collection_107.png";
 import item8 from "../assets/collection_108.png";
 import { PiGreaterThanLight } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
+
 
 import { TiHomeOutline } from "react-icons/ti";
 
 const checkout = () => {
+  const navigate = useNavigate();
+
   return (
     <Layout>
       <div className="grid grid-cols-2">
         <left className=" p-10 space-y-5">
           <div className="space-x-4 text-color flex items-center">
-            <TiHomeOutline />
-            <span>Cart</span>
+            <TiHomeOutline onClick={()=>navigate("/learn-more")} className="cursor-pointer" />
+            <span onClick={()=>navigate("/Cart")} className="cursor-pointer">Cart</span>
             <PiGreaterThanLight />
             <span className="text-black">shipping</span>
             <PiGreaterThanLight />
-            <span>Payment</span>
+            <span onClick={()=>navigate("/payment")} className="cursor-pointer">Payment</span>
           </div>
 
           {/* contact */}

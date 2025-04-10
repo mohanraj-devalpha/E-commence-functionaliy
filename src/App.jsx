@@ -10,6 +10,7 @@ import Cart from './components/Cart.jsx';
 import { CartProvider } from './components/CartContext.jsx';
 import CheckOut from './components/checkout.jsx';
 import Contact from './components/Contact.jsx';
+import Payment from './components/Payment.jsx';
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
       <Route path="cart" element={<Cart />} />
       <Route path="/checkout" element={<CheckOut/>} />
       <Route path="/contact" element={<Contact/>}/>
+      <Route path="/payment" element={<Payment/>}/>
       
 
     </Routes>

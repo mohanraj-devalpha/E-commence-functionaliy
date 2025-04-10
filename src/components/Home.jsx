@@ -5,7 +5,7 @@ import leaf from "../assets/leaf-removebg-preview.png";
 
 import { ImQuotesLeft, ImQuotesRight } from "react-icons/im";
 import Layout from "./Layout";
-import item1 from "../assets/collection_103.png"
+import item1 from "../assets/collection_103.png";
 import item2 from "../assets/collection_102.png";
 import item5 from "../assets/collection_105.png";
 import item6 from "../assets/collection_106.png";
@@ -15,50 +15,49 @@ const Home = () => {
   return (
     <Layout>
       <Welcome className="bg-[#fdf1f0]" />
-      <div className="py-10 relative">
+      {/* Testimonial Section */}
+      <div className="py-10 relative flex flex-col lg:flex-row items-center justify-center px-6 lg:px-20">
         <img
           src={img}
           alt=""
-          className="absolute z-10 w-[461px] h-[400px] left-20 top-24"
+          className="w-72 sm:w-96 lg:w-[450px] h-auto object-cover mb-10 lg:mb-0 lg:mr-10"
         />
-        <div className="bg-[#fdf1f0] ml-40 mr-16 h-[500px] relative">
-          <div className="absolute top-28 right-36 w-[508px]">
-            <div className="flex flex-col space-y-3">
-              <span className="font-cormorant text-5xl">
-                Redefining Living Spaces with Furniture home
-              </span>
-              <p className="text-base font-thin">
-                <ImQuotesLeft className="inline text-xl mr-1" />
-                They expertly turned my space into a haven of style and comfort.
-                Every design element seemed to reflect my vision, creating an
-                atmosphere that resonated with my dreams. The seamless blend of
-                creativity and elegance has truly made my home an inspiring
-                sanctuary.
-                <ImQuotesRight className="inline text-xl ml-1" />
-              </p>
-
-              <button className="bg-black text-white px-5 py-3 h-12 w-36 rounded-lg">
-                Learn More
-              </button>
-            </div>
+        <div className="bg-[#fdf1f0] w-full lg:h-[500px] flex items-center px-6 sm:px-10 py-10 relative">
+          <div className="max-w-2xl space-y-5">
+            <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl leading-snug">
+              Redefining Living Spaces with Furniture home
+            </h2>
+            <p className="text-base font-light">
+              <ImQuotesLeft className="inline text-xl mr-1" />
+              They expertly turned my space into a haven of style and comfort.
+              Every design element reflected my vision, creating an atmosphere
+              that resonated with my dreams. The blend of creativity and
+              elegance has truly made my home a sanctuary.
+              <ImQuotesRight className="inline text-xl ml-1" />
+            </p>
+            <button className="bg-black text-white px-5 py-3 w-fit rounded-lg">
+              Learn More
+            </button>
           </div>
-          {/* <div>
-            <img src={leaf} alt="" className="absolute z-10 -rotate-45 -right-40"/>
-          </div> */}
         </div>
       </div>
-      <div className="text-center py-10 pt-20 pb-[600px] relative">
-        <p className="font-cormorant text-7xl">INSTAGRAM</p>
-        <p className="text-3xl ">#furniture</p>
-        <div>
-          <img src={item1} alt="" className="absolute z-10  left-36 w-52 h-52" />
-          <img src={item8} alt="" className="absolute z-10 top-72 left-72 w-52 h-52 shadow-2xl"/>
-          <img src={item5} alt="" className="absolute z-10 top-96 left-[600px] w-52 h-52"/>
-          <img src={item2} alt=""  className="absolute z-[15px] top-72 right-72 w-52 h-52 "/>
-          <img src={item6} alt="" className="absolute z-10 top-40 right-36 w-52 h-52  shadow-2xl" />
+
+      {/* Instagram Section */}
+      <div className="text-center py-16 relative">
+        <p className="font-cormorant text-4xl sm:text-6xl">INSTAGRAM</p>
+        <p className="text-xl sm:text-2xl mt-2 mb-10">#furniture</p>
+
+        {/* Responsive Grid for Instagram Images */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 px-6 sm:px-10 lg:px-20">
+          {[item1, item8, item5, item2, item6].map((imgSrc, index) => (
+            <img
+              key={index}
+              src={imgSrc}
+              alt={`item-${index}`}
+              className="w-full h-52 object-cover rounded-lg shadow-md"
+            />
+          ))}
         </div>
-       
-        
       </div>
     </Layout>
   );

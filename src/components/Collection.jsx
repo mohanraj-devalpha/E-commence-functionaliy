@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "./Layout";
 import { useNavigate } from "react-router-dom";
-import pot from "../assets/pot1.jpg"
+import pot from "../assets/pot1.jpg";
 
 import item1 from "../assets/collection_101.png";
 import item2 from "../assets/collection_102.png";
@@ -35,65 +35,115 @@ const items = [
 
 const Collection = () => {
   const navigate = useNavigate();
+  const [priceFilter, setPriceFilter] = useState("");
+
+  // Filter logic
+  const filteredItems = items.filter((item) => {
+    if (!priceFilter) return true;
+
+    const [min, max] = priceFilter.split("-").map(Number);
+    const numericPrice = parseFloat(item.price.replace("$", ""));
+    return numericPrice >= min && numericPrice <= max;
+  });
 
   return (
     <Layout>
-      <div className="p-10">
-        <div className="py-5 text-center">
-          <span className="text-7xl font-cormorant">Popular Collection</span>
-          <span>
-            <ul className="flex justify-center space-x-5 mt-10">
+      <div className="px-4 sm:px-6 lg:px-10 py-10">
+        <div className="text-center mb-10">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-cormorant">
+            Popular Collection
+          </h2>
+
+          <ul className="flex flex-wrap justify-center gap-4 mt-10">
+            <li>
+              <input
+                type="text"
+                placeholder="Type"
+                className="border py-2 px-3 rounded-lg focus:outline-none w-40 sm:w-48"
+              />
+            </li>
+            <li>
               <li>
-                <input type="text" placeholder="Type" className="border py-2 px-3 rounded-lg" />
+                <select
+                  value={priceFilter}
+                  onChange={(e) => setPriceFilter(e.target.value)}
+                  className="border py-2 px-3 rounded-lg focus:outline-none w-40 sm:w-48 text-gray-700 transition-all duration-300 ease-in-out focus:ring-2 focus:ring-black/20"
+                  >
+                  <option value="">All</option>
+                  <option value="10-100">$10 - $100</option>
+                  <option value="100-200">$100 - $200</option>
+                  <option value="200-300">$200 - $300</option>
+                </select>
               </li>
-              <li>
-                <input type="text" placeholder="Price" className="border py-2 px-3 rounded-lg" />
-              </li>
-              <li>
-                <input type="text" placeholder="Not For sale" className="border py-2 px-3 rounded-lg" />
-              </li>
-              <li className="py-2 px-3 cursor-pointer">
-                Clear all
-              </li>
-            </ul>
-          </span>
-          <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 py-16 px-16 cursor-pointer">
-          {items.map((item) => (
-              <div
-                key={item.id}
-                onClick={() =>
-                  navigate("/Items", {
-                    state: { img: item.image, title: item.title, price: item.price },
-                  })
-                }
-                className="flex flex-col"
-              >
-                <img src={item.image} alt={item.title} />
-                <div className="flex flex-col py-8 text-lg">
-                  <span className="font-bold">{item.title}</span>
-                  <span>{item.price}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+            </li>
+            <li>
+              <input
+                type="text"
+                placeholder="Not For Sale"
+                className="border py-2 px-3 rounded-lg focus:outline-none w-40 sm:w-48"
+              />
+            </li>
+            <li
+              className="py-2 px-3 text-red-500 cursor-pointer font-medium"
+              onClick={() => setPriceFilter("")}
+            >
+              Clear all
+            </li>
+          </ul>
         </div>
-        <div className="grid grid-cols-2">
-          <div className="bg-slate-900 text-white p-20 space-y-8">
-            <span className="font-cormorant text-5xl">Discover our new accessories collection</span>
-            <p >Lorem ipsum dolor sit amet, consectetur adipiscing 
-              elit. Sed convallis nisi eu ultricies hendrerit. Fusce
-               massa ligula, suscipit sit amet porta in, consectetur 
-               ut sem. Maecenas velit velit, tincidunt quis risus non,
-                imperdiet egestas mauris. Ut efficitur orci ligula, vehicula
-                 fermentum ante volutpat ut</p>
-                 <button className=" text-black px-5 py-3 h-12 rounded-lg border-2  bg-white">
-                 Learn More</button>
-           
+
+        {/* Filtered Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 py-10">
+          {filteredItems.map((item) => (
+            <div
+              key={item.id}
+              onClick={() =>
+                navigate("/Items", {
+                  state: {
+                    img: item.image,
+                    title: item.title,
+                    price: item.price,
+                  },
+                })
+              }
+              className="flex flex-col items-center hover:opacity-75 transition"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-64 object-cover"
+              />
+              <div className="text-center py-4 text-lg">
+                <span className="font-bold block">{item.title}</span>
+                <span>{item.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* New Collection Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 mt-20">
+          <div className="bg-slate-900 text-white p-8 sm:p-16 flex flex-col justify-center space-y-6">
+            <h2 className="font-cormorant text-3xl sm:text-4xl md:text-5xl">
+              Discover our new accessories collection
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              convallis nisi eu ultricies hendrerit. Fusce massa ligula,
+              suscipit sit amet porta in, consectetur ut sem. Maecenas velit,
+              tincidunt quis risus non, imperdiet egestas mauris.
+            </p>
+            <button className="bg-white text-black px-5 py-2 rounded-lg border-2 w-fit hover:opacity-90 transition">
+              Learn More
+            </button>
           </div>
-          <div className="object-fit">
-            <img src={pot} alt="" className="object-fill h-full"/>
+          <div>
+            <img
+              src={pot}
+              alt="pot item"
+              className="w-full h-full object-cover"
+            />
           </div>
-          
         </div>
       </div>
     </Layout>
