@@ -62,7 +62,7 @@ const Cart = () => {
           </button>
         </div>
 
-        {[...cartItems].reverse().map((item, index) => (
+        {cartItems.map((item, index) => (
           <div
             key={index}
             className="flex flex-col lg:flex-row justify-between gap-6 p-6 border-b"
@@ -75,7 +75,7 @@ const Cart = () => {
                 className="w-full sm:w-40 rounded-lg object-cover"
               />
               <div className="space-y-6 flex-1">
-                <p className="font-bold text-xl">{item.title}</p>
+                <p className="font-bold text-xl text-start">{item.title}</p>
 
                 <div className="text-gray-600 space-y-2 text-sm">
                   <div className="flex items-center space-x-2">
