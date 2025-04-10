@@ -8,7 +8,7 @@ import Details from './components/Details.jsx';
 import Reviews from './components/Reviews.jsx';
 import Cart from './components/Cart.jsx';
 import { CartProvider } from './components/CartContext.jsx';
-import CheckOut from './components/checkout.jsx';
+import CheckOut from './components/CheckOut.jsx';
 import Contact from './components/Contact.jsx';
 import Payment from './components/Payment.jsx';
 
