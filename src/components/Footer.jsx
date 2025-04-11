@@ -4,8 +4,19 @@ import { ImTwitter } from "react-icons/im";
 import { FaInstagram } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
 import { LuCopyright } from "react-icons/lu";
+import { useForm } from "react-hook-form";
 
 const Footer = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("Subscribed with:", data.email);
+    // handle submission logic here
+  };
   return (
     <>
       <div className="py-10 px-10 md:px-20 border-y-2">
@@ -43,21 +54,39 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col space-y-4 w-full footer:w-80 items-center footer:items-start">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col space-y-4 w-full footer:w-80 items-center footer:items-start"
+          >
             <span className="font-bold">Subscribe to our newsletter</span>
             <p className="text-color">
               Join our community to get weekly updates and unique gifts every
               Friday
             </p>
+
             <input
               type="text"
               placeholder="Email"
-              className="border py-2 px-3 rounded-lg focus:outline-none hover:border-blue-500"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Invalid email address",
+                },
+              })}
+              className="border py-2 px-3 rounded-lg focus:outline-none hover:border-blue-500 w-full"
             />
-            <button className="bg-slate-950 text-white px-5 py-1 h-10 w-32 rounded-lg hover:opacity-90">
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email.message}</p>
+            )}
+
+            <button
+              type="submit"
+              className="bg-slate-950 text-white px-5 py-1 h-10 w-32 rounded-lg hover:opacity-90"
+            >
               Subscribe
             </button>
-          </div>
+          </form>
         </div>
       </div>
 

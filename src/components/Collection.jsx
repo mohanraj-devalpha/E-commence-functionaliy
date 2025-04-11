@@ -18,32 +18,101 @@ import item12 from "../assets/collection_112.png";
 import item13 from "../assets/collection_113.png";
 
 const items = [
-  { id: 1, image: item3, title: "Flower Vase", price: "$29.99" },
-  { id: 2, image: item4, title: "Book Self", price: "$119.99" },
-  { id: 3, image: item5, title: "Table Chair", price: "$180.34" },
-  { id: 4, image: item6, title: "Wall Clock", price: "$20.14" },
-  { id: 5, image: item2, title: "Round table", price: "$24.99" },
-  { id: 6, image: item1, title: "Pottery Vase", price: "$24.99" },
-  { id: 7, image: item8, title: "wooden sofa", price: "$140.22" },
-  { id: 8, image: item7, title: "Black chair", price: "$160.34" },
-  { id: 9, image: item9, title: "GreenVase", price: "$40.13" },
-  { id: 10, image: item10, title: "White chair", price: "$320.25" },
-  { id: 11, image: item11, title: "White Table", price: "$279.99" },
-  { id: 12, image: item12, title: "Stripes Vase", price: "$39.99" },
-  { id: 13, image: item13, title: "Wooden Clock", price: "$24.99" },
+  { id: 1, image: item3, title: "Flower Vase", price: "$29.99", type: "Vases" },
+  {
+    id: 2,
+    image: item4,
+    title: "Book Shelf",
+    price: "$119.99",
+    type: "Furniture",
+  },
+  {
+    id: 3,
+    image: item5,
+    title: "Table Chair",
+    price: "$180.34",
+    type: "Furniture",
+  },
+  {
+    id: 4,
+    image: item6,
+    title: "Wall Clock",
+    price: "$20.14",
+    type: "Accessories",
+  },
+  {
+    id: 5,
+    image: item2,
+    title: "Round Table",
+    price: "$24.99",
+    type: "Furniture",
+  },
+  {
+    id: 6,
+    image: item1,
+    title: "Pottery Vase",
+    price: "$24.99",
+    type: "Vases",
+  },
+  {
+    id: 7,
+    image: item8,
+    title: "Wooden Sofa",
+    price: "$140.22",
+    type: "Furniture",
+  },
+  {
+    id: 8,
+    image: item7,
+    title: "Black Chair",
+    price: "$160.34",
+    type: "Furniture",
+  },
+  { id: 9, image: item9, title: "Green Vase", price: "$40.13", type: "Vases" },
+  {
+    id: 10,
+    image: item10,
+    title: "White Chair",
+    price: "$320.25",
+    type: "Furniture",
+  },
+  {
+    id: 11,
+    image: item11,
+    title: "White Table",
+    price: "$279.99",
+    type: "Furniture",
+  },
+  {
+    id: 12,
+    image: item12,
+    title: "Stripes Vase",
+    price: "$39.99",
+    type: "Vases",
+  },
+  {
+    id: 13,
+    image: item13,
+    title: "Wooden Clock",
+    price: "$24.99",
+    type: "Accessories",
+  },
 ];
 
 const Collection = () => {
   const navigate = useNavigate();
+  const [typeFilter, setTypeFilter] = useState("");
   const [priceFilter, setPriceFilter] = useState("");
 
   // Filter logic
   const filteredItems = items.filter((item) => {
-    if (!priceFilter) return true;
-
-    const [min, max] = priceFilter.split("-").map(Number);
+    const [min, max] = priceFilter
+      ? priceFilter.split("-").map(Number)
+      : [0, Infinity];
     const numericPrice = parseFloat(item.price.replace("$", ""));
-    return numericPrice >= min && numericPrice <= max;
+    const priceMatch = numericPrice >= min && numericPrice <= max;
+    const typeMatch = typeFilter ? item.type === typeFilter : true;
+    return priceMatch && typeMatch;
   });
 
   return (
@@ -56,23 +125,35 @@ const Collection = () => {
 
           <ul className="flex flex-wrap justify-center gap-4 mt-10">
             <li>
-              <input
-                type="text"
-                placeholder="Type"
-                className="border py-2 px-3 rounded-lg focus:outline-none w-40 sm:w-48"
-              />
+              <select
+                value={typeFilter}
+                onChange={(e) => setTypeFilter(e.target.value)}
+                className="border py-2 px-3 rounded-lg focus:outline-none w-40 sm:w-48 text-gray-700 transition-all duration-300 ease-in-out focus:ring-2 focus:ring-black/20"
+              >
+                <option value="" disabled hidden>
+                  Type
+                </option>
+                <option value="">All Types</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Vases">Vases</option>
+              </select>
             </li>
+
             <li>
-                <select
-                  value={priceFilter}
-                  onChange={(e) => setPriceFilter(e.target.value)}
-                  className="border py-2 px-3 rounded-lg focus:outline-none w-40 sm:w-48 text-gray-700 transition-all duration-300 ease-in-out focus:ring-2 focus:ring-black/20"
-                  >
-                  <option value="">All</option>
-                  <option value="10-100">$10 - $100</option>
-                  <option value="100-200">$100 - $200</option>
-                  <option value="200-300">$200 - $300</option>
-                </select>
+              <select
+                value={priceFilter}
+                onChange={(e) => setPriceFilter(e.target.value)}
+                className="border py-2 px-3 rounded-lg focus:outline-none w-40 sm:w-48 text-gray-700 transition-all duration-300 ease-in-out focus:ring-2 focus:ring-black/20"
+              >
+                <option value="" disabled hidden>
+                  Price
+                </option>
+                <option value="">All</option>
+                <option value="10-100">$10 - $100</option>
+                <option value="100-200">$100 - $200</option>
+                <option value="200-300">$200 - $300</option>
+              </select>
             </li>
             <li>
               <input
@@ -82,8 +163,11 @@ const Collection = () => {
               />
             </li>
             <li
-              className="py-2 px-3 text-red-500 cursor-pointer font-medium"
-              onClick={() => setPriceFilter("")}
+              className="py-2 px-3 text-color cursor-pointer font-medium"
+              onClick={() => {
+                setPriceFilter("");
+                setTypeFilter("");
+              }}
             >
               Clear all
             </li>

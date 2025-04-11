@@ -17,14 +17,70 @@ import item7 from "../assets/collection_107.png";
 import item8 from "../assets/collection_108.png";
 
 const items = [
-  { id: 1, image: item3, title: "Flower Vase", price: "$29.99" },
-  { id: 2, image: item4, title: "Book Self", price: "$119.99" },
-  { id: 3, image: item5, title: "Table Chair", price: "$180.34" },
-  { id: 4, image: item6, title: "Wall Clock", price: "$20.14" },
-  { id: 5, image: item2, title: "Round table", price: "$24.99" },
-  { id: 6, image: item1, title: "Pottery Vase", price: "$24.99" },
-  { id: 7, image: item8, title: "wooden sofa", price: "$140.22" },
-  { id: 8, image: item7, title: "Black chair", price: "$160.34" },
+  {
+    id: 1,
+    image: item3,
+    title: "Flower Vase",
+    price: "$29.99",
+    rating: 2,
+    reviewCount: 12,
+  },
+  {
+    id: 2,
+    image: item4,
+    title: "Book Self",
+    price: "$119.99",
+    rating: 4.8,
+    reviewCount: 34,
+  },
+  {
+    id: 3,
+    image: item5,
+    title: "Table Chair",
+    price: "$180.34",
+    rating: 4.9,
+    reviewCount: 56,
+  },
+  {
+    id: 4,
+    image: item6,
+    title: "Wall Clock",
+    price: "$20.14",
+    rating: 4.2,
+    reviewCount: 8,
+  },
+  {
+    id: 5,
+    image: item2,
+    title: "Round table",
+    price: "$24.99",
+    rating: 4.0,
+    reviewCount: 20,
+  },
+  {
+    id: 6,
+    image: item1,
+    title: "Pottery Vase",
+    price: "$24.99",
+    rating: 3,
+    reviewCount: 19,
+  },
+  {
+    id: 7,
+    image: item8,
+    title: "wooden sofa",
+    price: "$140.22",
+    rating: 5.0,
+    reviewCount: 25,
+  },
+  {
+    id: 8,
+    image: item7,
+    title: "Black chair",
+    price: "$160.34",
+    rating: 2.3,
+    reviewCount: 30,
+  },
 ];
 
 import sideimg from "../assets/Loading.png";
@@ -41,8 +97,8 @@ const Items = () => {
   const navigate = useNavigate();
 
   // const location = useLocation();
-  const { state, } = useLocation();
-  const { img, title, price } = state || {};
+  const { state } = useLocation();
+  const { img, title, price, rating = 5.0, reviewCount = 0 } = state || {};
 
   const { addToCart } = useCart();
 
@@ -56,7 +112,6 @@ const Items = () => {
   const [color, setColor] = useState("");
 
   const handleAddToCart = () => {
-    
     const cartItem = {
       img,
       title,
@@ -97,24 +152,24 @@ const Items = () => {
           <img
             src={img}
             alt="Main"
-            className="w-full max-w-md mx-auto object-contain"
+            className="w-full max-w-md mx-auto object-contain h-auto"
           />
 
-          <div className="flex flex-row lg:flex-col justify-center gap-4 lg:space-y-4">
+          <div className="flex flex-row lg:flex-col justify-center gap-4 lg:space-y-4  w-40">
             <img
               src={sideimg}
               alt="Side 1"
-              className="w-20 h-20 object-cover"
+              className=" object-cover"
             />
             <img
               src={sideimg}
               alt="Side 2"
-              className="w-20 h-20 object-cover"
+              className=" object-cover"
             />
             <img
               src={sideimg}
               alt="Side 3"
-              className="w-20 h-20 object-cover"
+              className=" object-cover"
             />
           </div>
         </div>
@@ -126,10 +181,23 @@ const Items = () => {
             <span className="text-lg sm:text-xl font-medium">{price}</span>
           </div>
 
-          <div className="flex space-x-1 text-xl">
-            {[...Array(5)].map((_, i) => (
-              <IoStar key={i} className="text-blue-600" />
-            ))}
+          <div className="flex gap-4 items-center">
+            <div className="flex space-x-1 text-xl">
+              {[...Array(5)].map((_, i) =>
+                i < Math.round(rating) ? (
+                  <IoStar key={i} className="text-blue-600" />
+                ) : (
+                  <BsStar key={i} className="text-blue-600" />
+                )
+              )}
+            </div>
+
+            <div className="flex gap-2 text-color text-base font-medium">
+              <span>{rating.toFixed(2)}</span>
+              <span>|</span>
+              <span>{reviewCount}</span>
+              <span>Reviews</span>
+            </div>
           </div>
 
           <p className="text-color pt-2 sm:pt-5 text-sm sm:text-base">
@@ -196,13 +264,13 @@ const Items = () => {
           </div>
 
           {/* Info Row */}
-          <div className="flex flex-col sm:flex-row sm:space-x-10 space-y-4 sm:space-y-0 text-color">
-            <div className="flex space-x-3 items-center text-sm sm:text-base">
-              <CiCreditCard1 className="mt-1 text-lg text-black"/>
+          <div className="flex flex-col sm:flex-row sm:space-x-10 space-y-4 sm:space-y-0 text-color pt-5">
+            <div className="flex items-center space-x-3 text-sm sm:text-base">
+              <CiCreditCard1 className="text-xl text-black" />
               <p>Pay in 21 days</p>
             </div>
-            <div className="flex space-x-3  text-sm sm:text-base">
-              <SlReload className="rotate-180 mt-1  text-black" />
+            <div className="flex items-center space-x-3 text-sm sm:text-base">
+              <SlReload className="text-xl text-black transform rotate-180" />
               <p>30 days return policy</p>
             </div>
           </div>
@@ -245,15 +313,20 @@ const Items = () => {
           {items.map((item) => (
             <div
               key={item.id}
-              onClick={() =>
+              onClick={() => {
                 navigate("/Items", {
                   state: {
                     img: item.image,
                     title: item.title,
                     price: item.price,
+                    rating: item.rating,
+                    reviewCount: item.reviewCount,
                   },
-                })
-              }
+                });
+
+                // Scroll to top manually
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               className="flex flex-col hover:opacity-50"
             >
               <img src={item.image} alt={item.title} />

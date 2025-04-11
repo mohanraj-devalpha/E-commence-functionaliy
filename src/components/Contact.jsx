@@ -50,7 +50,7 @@ const Contact = () => {
                 message: "Invalid email format",
               },
             })}
-            className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
+            className="border-2 rounded-lg w-full p-2 hover:border-blue-500 focus:outline-none"
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -64,7 +64,7 @@ const Contact = () => {
                 {...register("firstName", {
                   required: "First name is required",
                 })}
-                className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
+                className="border-2 rounded-lg w-full p-2 hover:border-blue-500 focus:outline-none"
               />
               {errors.firstName && (
                 <p className="text-red-500 text-sm">
@@ -77,7 +77,7 @@ const Contact = () => {
                 type="text"
                 placeholder="Last name"
                 {...register("lastName", { required: "Last name is required" })}
-                className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
+                className="border-2 rounded-lg w-full p-2 hover:border-blue-500 focus:outline-none"
               />
               {errors.lastName && (
                 <p className="text-red-500 text-sm">
@@ -91,7 +91,7 @@ const Contact = () => {
             type="text"
             placeholder="Address"
             {...register("address", { required: "Address is required" })}
-            className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
+            className="border-2 rounded-lg w-full p-2 hover:border-blue-500 focus:outline-none"
           />
           {errors.address && (
             <p className="text-red-500 text-sm">{errors.address.message}</p>
@@ -100,7 +100,7 @@ const Contact = () => {
           <input
             type="text"
             placeholder="Product/Order inquiry"
-            className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
+            className="border-2 rounded-lg w-full p-2 hover:border-blue-500 focus:outline-none"
           />
           {errors.inquiry && (
             <p className="text-red-500 text-sm">{errors.inquiry.message}</p>
@@ -110,7 +110,7 @@ const Contact = () => {
             type="text"
             placeholder="Additional Address"
             {...register("additionalAddress")}
-            className="border-2 rounded-lg w-full p-2 hover:border-blue-500"
+            className="border-2 rounded-lg w-full p-2 hover:border-blue-500 focus:outline-none"
           />
 
           <div className="flex flex-col sm:flex-row sm:space-x-3 space-y-3 sm:space-y-0">
@@ -118,19 +118,19 @@ const Contact = () => {
               type="text"
               placeholder="Mobile Phone (optional)"
               {...register("mobile")}
-              className="border-2 rounded-lg w-full sm:w-1/2 p-2 hover:border-blue-500"
+              className="border-2 rounded-lg w-full sm:w-1/2 p-2 hover:border-blue-500 focus:outline-none"
             />
             <input
               type="text"
               placeholder="Phone (optional)"
               {...register("phone")}
-              className="border-2 rounded-lg w-full sm:w-1/2 p-2 hover:border-blue-500"
+              className="border-2 rounded-lg w-full sm:w-1/2 p-2 hover:border-blue-500 focus:outline-none "
             />
           </div>
 
           <textarea
             placeholder="Message"
-            className="border-2 rounded-lg w-full p-2 pb-40 hover:border-blue-500"
+            className="border-2 rounded-lg w-full p-2 pb-40 hover:border-blue-500 focus:outline-none"
           />
           {errors.message && (
             <p className="text-red-500 text-sm">{errors.message.message}</p>
