@@ -148,29 +148,26 @@ const Items = () => {
 
       <div className="grid grid-cols-1 xl:grid-cols-2 w-full">
         {/* Left Section */}
-        <div className="p-4 sm:p-8 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6">
-          <img
-            src={img}
-            alt="Main"
-            className="w-full max-w-md mx-auto object-contain h-auto"
-          />
+        <div className="p-4 sm:p-8 flex flex-col lg:flex-row gap-6">
+          {/* Main Image */}
+          <div className="flex-1">
+            <img
+              src={img}
+              alt="Main"
+              className="w-full max-w-full object-contain h-auto rounded-md"
+            />
+          </div>
 
-          <div className="flex flex-row lg:flex-col justify-center gap-4 lg:space-y-4  w-40">
-            <img
-              src={sideimg}
-              alt="Side 1"
-              className=" object-cover"
-            />
-            <img
-              src={sideimg}
-              alt="Side 2"
-              className=" object-cover"
-            />
-            <img
-              src={sideimg}
-              alt="Side 3"
-              className=" object-cover"
-            />
+          {/* Side Images */}
+          <div className="flex flex-row lg:flex-col justify-center gap-4 w-full lg:w-40">
+            {[sideimg, sideimg, sideimg].map((src, index) => (
+              <img
+                key={index}
+                src={src}
+                alt={`Side ${index + 1}`}
+                className="w-1/3 lg:w-full object-cover rounded-md"
+              />
+            ))}
           </div>
         </div>
 
