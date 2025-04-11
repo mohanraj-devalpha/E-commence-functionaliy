@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { SlReload } from "react-icons/sl";
 import { HiOutlineHome } from "react-icons/hi2";
 import { TbMathGreater } from "react-icons/tb";
+import Person from "../assets/change.jpg";
+import P from "../assets/p2.jpg";
+import p3 from "../assets/p3.jpg";
 
 import Bar from "../assets/progess.png";
 import item1 from "../assets/collection_101.png";
@@ -302,7 +305,121 @@ const Items = () => {
         <Outlet />
       </div> */}
 
-      <div className="py-20 text-center border-t-2 md:pb-[600px]">
+      <div className="pb-5 text-color px-4 sm:px-8 md:px-12">
+        <div className="flex flex-wrap sm:space-x-6 space-x-3">
+          <p className="hover:underline underline-offset-[25px] hover:cursor-pointer decoration-blue-500">
+            Details
+          </p>
+          <p className="hover:underline underline-offset-[25px] hover:cursor-pointer decoration-blue-500">
+            Reviews
+          </p>
+          <p className="hover:underline underline-offset-[25px] hover:cursor-pointer decoration-blue-500">
+            Shipping and Returns
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-col lg:flex-row justify-between gap-10 py-10 border-t-2 mx-4 sm:mx-8 md:mx-10">
+        <div className="space-y-3 flex-1">
+          <span className="text-lg">Share your experience</span>
+          <p className="text-color max-w-md">
+            Your unique perspective, lessons, and moments of triumph can
+            resonate deeply with others. Don't hesitate to contribute your
+            story.
+          </p>
+          <button className="bg-black text-white px-5 py-3 h-12 w-36 rounded-lg">
+            Write a review
+          </button>
+        </div>
+
+        <div className="space-y-2 flex-1">
+          <span className="text-color text-3xl sm:text-4xl font-thin">
+            <span className="text-black font-bold">190</span> Reviews
+          </span>
+          <div className="flex space-x-2 text-xl">
+            <IoStar className="text-blue-600" />
+            <IoStar className="text-blue-600" />
+            <BsStar />
+            <BsStar />
+            <BsStar />
+          </div>
+        </div>
+
+        {/* <div className="flex gap-3 flex-1">
+          <div className="flex flex-col">
+            <span>5</span>
+            <span>4</span>
+            <span>3</span>
+            <span>2</span>
+            <span>1</span>
+          </div>
+          <div className="space-y-2 mt-1 text-blue-700">
+            <IoStar />
+            <IoStar />
+            <IoStar />
+            <IoStar />
+            <IoStar />
+          </div>
+          <div>
+            <img src={Bar} alt="" />
+            <img src={Bar} alt="" />
+            <img src={Bar} alt="" />
+            <img src={Bar} alt="" />
+            <img src={Bar} alt="" />
+          </div>
+          <div className="flex flex-col">
+            <span>75%</span>
+            <span>50%</span>
+            <span>20%</span>
+            <span>40%</span>
+            <span>30%</span>
+          </div>
+        </div> */}
+      </div>
+
+      {/* Review Item */}
+      {[Person, P, p3].map((img, i) => {
+        const names = ["Robert Fox", "Savannah Williams", "Kathryn Murphy"];
+        const ratings = [4, 4, 5];
+        const reviews = [
+          `Absolutely captivated by the minimalist aesthetic in this decor! The clean lines, neutral tones, and thoughtfully placed elements create such a serene and inviting atmosphere that's hard to resist.`,
+          `Wow, that vintage-inspired furniture is an absolute game-changer. The seamless blend of old-world charm with contemporary elements is nothing short of pure genius, bringing a unique character that immediately catches the eye.`,
+          `can't help but marvel at the skillful use of the vibrant color scheme in this space. It adds an incredible amount of energy, and each shade seems to have its own story. It injects so much personality into the room that I'm now genuinely motivated to embark on my own home revamp journey!`,
+        ];
+
+        return (
+          <div
+            key={i}
+            className="flex flex-col md:flex-row mx-4 sm:mx-8 md:mx-10 mt-10 border-t-2 pt-5 gap-4"
+          >
+            <div className="flex flex-col space-y-6 flex-1">
+              <div className="flex space-x-5">
+                <img
+                  src={img}
+                  alt=""
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <div className="flex flex-col text-color">
+                  <span className="text-black text-xl">{names[i]}</span>
+                  <span>February 3, 2023</span>
+                </div>
+              </div>
+              <p className="text-color">{reviews[i]}</p>
+            </div>
+            <div className="flex text-blue-700 items-center space-x-2 mt-4 md:mt-0">
+              {[...Array(ratings[i])].map((_, idx) => (
+                <IoStar key={idx} />
+              ))}
+              {[...Array(5 - ratings[i])].map((_, idx) => (
+                <BsStar key={idx} />
+              ))}
+              <span>{ratings[i]}</span>
+            </div>
+          </div>
+        );
+      })}
+
+      <div className="py-20 text-center pt-20 md:pb-[600px]">
         <span className="text-3xl md:text-7xl font-cormorant ">
           Popular Collection
         </span>

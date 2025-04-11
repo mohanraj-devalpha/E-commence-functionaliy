@@ -70,7 +70,7 @@ const checkout = () => {
             <input
               type="email"
               placeholder="Email"
-              className="border rounded-lg w-full p-2"
+              className="border rounded-lg w-full p-2 focus:outline-none"
               {...register("email", { required: "Email is required" })}
             />
             {errors.email && (
@@ -86,44 +86,45 @@ const checkout = () => {
             <input
               type="text"
               placeholder="Country/Region"
-              className="border rounded-lg w-full p-2"
+              className="border rounded-lg w-full p-2 focus:outline-none"
               {...register("country")}
             />
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <input
-                type="text"
-                placeholder="First name (optional)"
-                className="border rounded-lg w-full p-2"
-                {...register("firstName")}
-              />
-              <div className="w-full">
+            <div className="w-full">
                 <input
                   type="text"
-                  placeholder="Last name"
-                  className="border rounded-lg w-full p-2"
-                  {...register("lastName", {
-                    required: "Last name is required",
+                  placeholder="First name (optional)"
+                  className="border rounded-lg w-full p-2 focus:outline-none"
+                  {...register("firstName", {
+                    required: "First name is required",
                   })}
                 />
-                {errors.lastName && (
+                {errors.firstName && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.lastName.message}
+                    {errors.firstName.message}
                   </p>
                 )}
               </div>
+              <input
+                type="text"
+                placeholder=" Last name"
+                className="border rounded-lg w-full p-2 focus:outline-none"
+                {...register("lasstName")}
+              />
+              
             </div>
 
             <input
               type="text"
               placeholder="Address"
-              className="border rounded-lg w-full p-2"
+              className="border rounded-lg w-full p-2 focus:outline-none"
               {...register("address")}
             />
             <input
               type="text"
               placeholder="Apartment, suite, etc. (optional)"
-              className="border rounded-lg w-full p-2"
+              className="border rounded-lg w-full p-2 focus:outline-none"
               {...register("apartment")}
             />
 
@@ -132,7 +133,7 @@ const checkout = () => {
                 <input
                   type="text"
                   placeholder="Postal Code"
-                  className="border rounded-lg w-full p-2"
+                  className="border rounded-lg w-full p-2 focus:outline-none"
                   {...register("postalCode", {
                     required: "Postal code is required",
                     pattern: {
@@ -147,7 +148,7 @@ const checkout = () => {
                 <input
                   type="text"
                   placeholder="City"
-                  className="border rounded-lg w-full p-2"
+                  className="border rounded-lg w-full p-2 focus:outline-none"
                   {...register("city", { required: "City is required" })}
                 />
               </div>
@@ -170,7 +171,7 @@ const checkout = () => {
             </div>
 
             <div className="flex items-center space-x-2 p-2">
-              <input type="checkbox" className="w-5 h-5 border" />
+              <input type="checkbox" className="w-5 h-5 border focus:outline-none" />
               <span className="text-check">Save for next purchase</span>
             </div>
 
