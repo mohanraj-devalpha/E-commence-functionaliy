@@ -30,7 +30,7 @@ const Welcome = () => {
       <div className="snap-y">
         {/* Hero Section */}
         <div className="grid xl:grid-cols-2 relative">
-        <div className="flex bg-[#fdf1f0] min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+        <div className="flex bg-[#fdf1f0] min-h-[300px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px]">
         <div className="absolute top-20 sm:top-28 left-6 sm:left-10 md:left-20 xl:left-28 flex flex-col space-y-6 sm:space-y-10 max-w-xs sm:max-w-md md:max-w-lg">
               <p className="text-sm sm:text-base">Furniture Home</p>
               <p className="font-cormorant text-4xl sm:text-6xl xl:text-8xl leading-tight">
@@ -55,7 +55,7 @@ const Welcome = () => {
         </div>
 
         {/* What We Do Section */}
-        <div className="py-16 px-6 sm:px-10 md:px-20 text-center space-y-10">
+        <div className="py-5 md:py-16 px-6 sm:px-10 md:px-20 text-center space-y-10">
           <span className="text-4xl sm:text-5xl xl:text-7xl font-cormorant">
             What We Do
           </span>
@@ -80,7 +80,7 @@ const Welcome = () => {
         </div>
 
         {/* Popular Collection */}
-        <div className="py-10 text-center">
+        <div className="py-2 md:py-10 text-center">
           <span className="text-3xl sm:text-5xl md:text-6xl font-cormorant">
             Popular Collection
           </span>
