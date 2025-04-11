@@ -91,15 +91,16 @@ const Footer = () => {
       </div>
 
       <div className="flex flex-wrap gap-5 py-8 justify-between px-8 md:px-16">
-        <div>
+        <div className="w-full md:w-auto flex justify-center md:justify-start">
           <span className="flex space-x-3 items-center text-sm">
             <LuCopyright className="mt-1 text-color" />
-            <p className="py-1  text-color">
+            <p className="py-1 text-color">
               2022 Company, Inc. All rights reserved.
             </p>
           </span>
         </div>
-        <div className="flex space-x-4 text-2xl">
+
+        <div className="w-full md:w-auto flex justify-center md:justify-end space-x-4 text-2xl">
           <ImTwitter className="text-color" />
           <FaInstagram className="text-color" />
           <SiFacebook className="text-color" />
