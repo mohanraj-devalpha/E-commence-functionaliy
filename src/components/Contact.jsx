@@ -37,7 +37,7 @@ const Contact = () => {
       {/* <form onSubmit={handleSubmit(onSubmit)} > */}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="absolute top-[560px] md:top-[360px] left-0 w-full flex flex-col justify-center items-center py-10 px-10"
+        className="absolute top-[360px] md:top-[360px] left-0 w-full flex flex-col justify-center items-center py-10 px-10"
       >
         <div className="space-y-5 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl px-4">
           <input
