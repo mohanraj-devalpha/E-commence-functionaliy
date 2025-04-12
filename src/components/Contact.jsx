@@ -17,27 +17,34 @@ const Contact = () => {
   // const {register ,handleSubmit}=useForm()
   return (
     <Layout>
-      <div className="bg-slate-100 text-center space-y-5 py-10 mb-[1000px] md:mb-[800px]">
-        <div>{/* <img src={} alt="" /> */}</div>
+      <div className="bg-slate-100 text-center space-y-5 py-10">
         <div className="px-5">
-          <span className=" text-4xl md:text-7xl font-cormorant">Contact Us</span>
+          <span className=" text-4xl md:text-7xl font-cormorant">
+            Contact Us
+          </span>
           <p className="text-contact text-sm md:text-base">
             love talking to our customers and are here to help. Please use one
             of the methods below to get in touch
           </p>
         </div>
         <div className="flex flex-col text-contact px-5">
-          <span className="text-blue-500 text-base md:text-lg">hello@furniturehome.com</span>
+          <span className="text-blue-500 text-base md:text-lg">
+            hello@furniturehome.com
+          </span>
           <span className="text-sm md:text-lg">(877)-1404-6763</span>
           <span className="text-sm md:text-lg">M-F 9am - 5:30pm EST</span>
-          <span className="text-sm md:text-lg">18 North Water St, Suite 55</span>
-          <span className="text-sm md:text-lg">Lancaster, PA 17603 (by appointment only)</span>
+          <span className="text-sm md:text-lg">
+            18 North Water St, Suite 55
+          </span>
+          <span className="text-sm md:text-lg">
+            Lancaster, PA 17603 (by appointment only)
+          </span>
         </div>
       </div>
       {/* <form onSubmit={handleSubmit(onSubmit)} > */}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="absolute top-[360px] md:top-[360px] left-0 w-full flex flex-col justify-center items-center py-10 px-10"
+        className="w-full flex flex-col justify-center items-center py-10 px-5 bg-white"
       >
         <div className="space-y-5 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl px-4">
           <input
