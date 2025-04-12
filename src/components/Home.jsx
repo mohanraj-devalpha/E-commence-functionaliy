@@ -43,7 +43,7 @@ const Home = () => {
       </div>
 
       {/* Instagram Section */}
-      <div className="text-center py-16 relative">
+      <div className="text-center py-2 md:py-16 relative">
         <p className="font-cormorant text-4xl sm:text-6xl">INSTAGRAM</p>
         <p className="text-xl sm:text-2xl mt-2 mb-10">#furniture</p>
 

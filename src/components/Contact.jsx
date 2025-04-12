@@ -19,19 +19,19 @@ const Contact = () => {
     <Layout>
       <div className="bg-slate-100 text-center space-y-5 py-10 mb-[1000px] md:mb-[800px]">
         <div>{/* <img src={} alt="" /> */}</div>
-        <div>
-          <span className="text-7xl font-cormorant">Contact Us</span>
-          <p className="text-contact text-base">
+        <div className="px-5">
+          <span className=" text-4xl md:text-7xl font-cormorant">Contact Us</span>
+          <p className="text-contact text-sm md:text-base">
             love talking to our customers and are here to help. Please use one
             of the methods below to get in touch
           </p>
         </div>
-        <div className="flex flex-col text-contact">
-          <span className="text-blue-500 text-lg">hello@furniturehome.com</span>
-          <span>(877)-1404-6763</span>
-          <span>M-F 9am - 5:30pm EST</span>
-          <span>18 North Water St, Suite 55</span>
-          <span>Lancaster, PA 17603 (by appointment only)</span>
+        <div className="flex flex-col text-contact px-5">
+          <span className="text-blue-500 text-base md:text-lg">hello@furniturehome.com</span>
+          <span className="text-sm md:text-lg">(877)-1404-6763</span>
+          <span className="text-sm md:text-lg">M-F 9am - 5:30pm EST</span>
+          <span className="text-sm md:text-lg">18 North Water St, Suite 55</span>
+          <span className="text-sm md:text-lg">Lancaster, PA 17603 (by appointment only)</span>
         </div>
       </div>
       {/* <form onSubmit={handleSubmit(onSubmit)} > */}

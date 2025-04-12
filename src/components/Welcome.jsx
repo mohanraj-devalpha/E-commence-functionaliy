@@ -85,7 +85,7 @@ const Welcome = () => {
             Popular Collection
           </span>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 py-12 px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 py-1 md:py-12 px-6 sm:px-10 lg:px-16">
             {items.map((item) => (
               <div
                 key={item.id}
