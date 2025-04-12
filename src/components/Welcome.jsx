@@ -19,7 +19,7 @@ const items = [
   { id: 4, image: item6, title: "Wall Clock", price: "$20.14" },
   { id: 5, image: item2, title: "Round table", price: "$24.99" },
   { id: 6, image: item1, title: "Pottery Vase", price: "$24.99" },
-  { id: 7, image: item8, title: "wooden sofa", price: "$140.22" },
+  { id: 7, image: item8, title: "Wooden Sofa", price: "$140.22" },
   { id: 8, image: item7, title: "Black chair", price: "$160.34" },
 ];
 
