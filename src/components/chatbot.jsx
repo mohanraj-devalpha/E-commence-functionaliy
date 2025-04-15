@@ -38,7 +38,7 @@ const Chatbot = () => {
           { id: 13, image: "item13", title: "Wooden Clock", price: "$24.99", type: "Accessories" }
         ] 
 
-        When the user asks “What items do you have?” or similar, return exact asked items with title, price, and type. Do summarize. Just list the exact items.`,
+        When the user asks “What items do you have?” or similar, return exact asked items with title, price, and type. Do summarize. list items in the ordered maner not in the json format not in para in the single for each item.`,
       };
       updatedMessages = [systemMessage, { role: "user", content: input }];
     } else {
