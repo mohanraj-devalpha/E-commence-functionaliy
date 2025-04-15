@@ -5,7 +5,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isChatVisible, setIsChatVisible] = useState(false); // State for visibility
+  const [isChatVisible, setIsChatVisible] = useState(false);
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -57,8 +57,7 @@ const Chatbot = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization:
-              "Bearer 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", // Use env var in production!
+            Authorization: "Bearer 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", // Replace with your env var in prod
           },
         }
       );
@@ -73,26 +72,33 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="relative">
-      {/* Chat button to toggle visibility */}
+    <div className="fixed bottom-6 right-6 z-50">
+      {/* Toggle button */}
       <button
         onClick={() => setIsChatVisible(!isChatVisible)}
-        className="fixed bottom-6 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg z-50"
+        className="bg-blue-500 text-white p-3 rounded-full shadow-lg"
       >
-        {isChatVisible ? "Close Chat" : "Open Chat"}
+        {isChatVisible ? "Close Chat" : "Chat"}
       </button>
 
-      {/* Chat window */}
+      {/* Chatbox */}
       {isChatVisible && (
-        <div className="max-w-xl mx-auto p-4 space-y-4 bg-white border rounded-lg fixed bottom-16 right-6 w-full z-40">
-          <div className="text-center font-bold text-blue-500">Oasis Chabot</div>
-          <div className="h-96 overflow-y-auto border rounded-lg p-4 space-y-2 bg-white">
+        <div className="fixed bottom-20 right-4 sm:right-6 w-[90vw] max-w-md bg-white border rounded-lg shadow-xl flex flex-col h-[70vh] sm:h-[32rem]">
+          <div className="bg-blue-100 p-3 text-center font-semibold text-blue-700 rounded-t-lg">
+            Oasis Chatbot
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-3 space-y-2 bg-white">
             {messages
               .filter((msg) => msg.role !== "system")
               .map((msg, i) => (
                 <div
                   key={i}
-                  className={`p-2 rounded ${msg.role === "user" ? "bg-blue-100 text-right" : "bg-gray-100 text-left"}`}
+                  className={`p-2 rounded-lg max-w-[80%] ${
+                    msg.role === "user"
+                      ? "ml-auto bg-blue-100 text-right"
+                      : "mr-auto bg-gray-100 text-left"
+                  }`}
                 >
                   {msg.content}
                 </div>
@@ -100,17 +106,17 @@ const Chatbot = () => {
             {loading && <div className="text-gray-400">Typing...</div>}
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex p-3 border-t gap-2 bg-white">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="flex-1 border rounded px-3 py-2"
-              placeholder="Ask something..."
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
+              className="flex-1 border rounded px-3 py-2 text-sm focus:outline-none"
+              placeholder="Ask something..."
             />
             <button
               onClick={handleSend}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm"
             >
               Send
             </button>
