@@ -42,7 +42,13 @@ const Chatbot = () => {
           { id: 13, image: "item13", title: "Wooden Clock", price: "$24.99", type: "Accessories" }
         ] 
 
-        When the user asks “What items do you have?” or similar, return exact asked items with title only if user asked futher details provide that too. Do summarize. list items in the ordered maner not in the json format not in para in the single for each item.`,
+        When the user asks “What items do you have?” or similar, return exact asked items with title only if user asked futher details provide that too. Do summarize. list items in the ordered maner not in the json format not in para in the single for each item.
+        
+        if user asked about the payment details it should be in card only 
+         try to manage the FAQ from the users 
+         dont provide anyother info about other topics.
+        
+        `,
       };
       updatedMessages = [systemMessage, { role: "user", content: input }];
     } else {
@@ -80,7 +86,7 @@ const Chatbot = () => {
       {/* Toggle button */}
       <button
         onClick={() => setIsChatVisible(!isChatVisible)}
-        className="bg-blue-500 text-white p-3 rounded-full  shadow-lg text-xl"
+        className="bg-blue-500 text-white p-3 rounded-full  shadow-xl text-xl"
       >
         {isChatVisible ? "Close Chat" : <  TbMessageChatbotFilled/>}
       </button>
