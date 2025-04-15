@@ -12,30 +12,26 @@ import Contact from "./components/Contact.jsx";
 import Payment from "./components/Payment.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import StripeWrapper from "./components/StripeWrapper.jsx";
-import Success from "./components/Success.jsx"; // adjust path as needed
-
-
+import Success from "./components/Success.jsx";
+import Chatbot from "./components/chatbot.jsx"; // Corrected the import to match the component name
 
 const App = () => {
   return (
     <CartProvider>
       <Router>
-      <ScrollToTop />
+        <ScrollToTop />
         <Routes>
-          {/* <NavBar/> */}
-
           <Route path="/" element={<Home />} />
           <Route path="/learn-more" element={<Collection />} />
-          <Route path="/items" element={<Items />}/>
-            
-          <Route path="cart" element={<Cart />} />
+          <Route path="/items" element={<Items />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/payment" element={<StripeWrapper><Payment /></StripeWrapper>} />
           <Route path="/success" element={<Success />} />
-
-          
-          </Routes>
+        </Routes>
+        {/* Chatbot fixed on all pages */}
+        <Chatbot />
       </Router>
     </CartProvider>
   );

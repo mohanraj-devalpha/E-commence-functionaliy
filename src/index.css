@@ -4,6 +4,15 @@
 @tailwind utilities;
 
 
+.chatbot-container {
+  position: fixed;
+  bottom: 20px; /* Adjust the bottom position */
+  right: 10px;  /* Adjust the right position */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+
+
 @keyframes rotate360 {
   0% {
     transform: rotate(0deg);
