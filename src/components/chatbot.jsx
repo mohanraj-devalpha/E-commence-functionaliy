@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+// import { BsChatLeftDots } from "react-icons/bs";
+import { TbMessageChatbotFilled } from "react-icons/tb";
+
+
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -76,9 +80,9 @@ const Chatbot = () => {
       {/* Toggle button */}
       <button
         onClick={() => setIsChatVisible(!isChatVisible)}
-        className="bg-blue-500 text-white p-3 rounded-full shadow-lg"
+        className="bg-blue-500 text-white p-3 rounded-full  shadow-lg text-xl"
       >
-        {isChatVisible ? "Close Chat" : "Chat"}
+        {isChatVisible ? "Close Chat" : <  TbMessageChatbotFilled/>}
       </button>
 
       {/* Chatbox */}
