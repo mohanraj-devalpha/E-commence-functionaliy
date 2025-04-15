@@ -38,7 +38,7 @@ const Chatbot = () => {
           { id: 13, image: "item13", title: "Wooden Clock", price: "$24.99", type: "Accessories" }
         ] 
 
-        When the user asks “What items do you have?” or similar, return exact asked items with title, price, and type. Do summarize. list items in the ordered maner not in the json format not in para in the single for each item.`,
+        When the user asks “What items do you have?” or similar, return exact asked items with title only if user asked futher details provide that too. Do summarize. list items in the ordered maner not in the json format not in para in the single for each item.`,
       };
       updatedMessages = [systemMessage, { role: "user", content: input }];
     } else {
@@ -77,7 +77,7 @@ const Chatbot = () => {
       {/* Chat button to toggle visibility */}
       <button
         onClick={() => setIsChatVisible(!isChatVisible)}
-        className="fixed bottom-6 right-5 bg-blue-500 text-white p-3 rounded-full shadow-lg z-50"
+        className="fixed bottom-6 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg z-50"
       >
         {isChatVisible ? "Close Chat" : "Open Chat"}
       </button>
@@ -85,6 +85,7 @@ const Chatbot = () => {
       {/* Chat window */}
       {isChatVisible && (
         <div className="max-w-xl mx-auto p-4 space-y-4 bg-white border rounded-lg fixed bottom-16 right-6 w-full z-40">
+          <div className="text-center font-bold text-blue-500">Oasis Chabot</div>
           <div className="h-96 overflow-y-auto border rounded-lg p-4 space-y-2 bg-white">
             {messages
               .filter((msg) => msg.role !== "system")
