@@ -77,7 +77,7 @@ const Chatbot = () => {
       {/* Chat button to toggle visibility */}
       <button
         onClick={() => setIsChatVisible(!isChatVisible)}
-        className="fixed bottom-6 right-5 bg-blue-500 text-white p-3 rounded-full shadow-lg z-50"
+        className="fixed top-20 right-5 bg-blue-500 text-white p-3 rounded-full shadow-lg z-50"
       >
         {isChatVisible ? "Close Chat" : "Open Chat"}
       </button>
