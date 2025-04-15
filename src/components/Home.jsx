@@ -35,7 +35,7 @@ const Home = () => {
               elegance has truly made my home a sanctuary.
               <ImQuotesRight className="inline text-xl ml-1" />
             </p>
-            <button className="bg-black text-white px-5 py-3 w-fit rounded-lg">
+            <button className="bg-black text-white px-5 py-3 w-fit rounded-lg hover:opacity-60">
               Learn More
             </button>
           </div>

@@ -157,7 +157,7 @@ const Items = () => {
             <img
               src={img}
               alt="Main"
-              className="w-full max-w-full object-contain h-auto rounded-md"
+              className="w-full max-w-full  h-full "
             />
           </div>
 
@@ -168,7 +168,7 @@ const Items = () => {
                 key={index}
                 src={src}
                 alt={`Side ${index + 1}`}
-                className="w-1/3 lg:w-full object-cover rounded-md"
+                className="w-1/3 lg:w-full object-cover px-5 md:px-0"
               />
             ))}
           </div>
@@ -419,7 +419,7 @@ const Items = () => {
         );
       })}
 
-      <div className="py-20 text-center pt-20 md:pb-[600px]">
+      <div className="py-20 text-center pt-20 ">
         <span className="text-3xl md:text-7xl font-cormorant ">
           Popular Collection
         </span>

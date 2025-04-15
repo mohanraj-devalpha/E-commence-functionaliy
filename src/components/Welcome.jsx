@@ -38,7 +38,7 @@ const Welcome = () => {
               </p>
               <p
                 onClick={() => navigate("/learn-more")}
-                className="bg-black text-white px-5 py-3 rounded-lg w-fit flex items-center space-x-2 cursor-pointer"
+                className="bg-black text-white px-5 py-3 rounded-lg w-fit flex items-center space-x-2 cursor-pointer hover:opacity-60"
               >
                 <span>Shop Now</span>
                 <MdOutlineArrowOutward className="text-white text-xl" />
@@ -74,7 +74,7 @@ const Welcome = () => {
             as we skillfully turn houses into homes and rooms into reflections
             of you.
           </p>
-          <button className="bg-black text-white px-5 py-3 rounded-lg">
+          <button className="bg-black text-white px-5 py-3 rounded-lg hover:opacity-60">
             Learn More
           </button>
         </div>

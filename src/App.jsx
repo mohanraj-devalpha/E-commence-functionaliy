@@ -11,6 +11,10 @@ import CheckOut from "./components/CheckOut.jsx";
 import Contact from "./components/Contact.jsx";
 import Payment from "./components/Payment.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import StripeWrapper from "./components/StripeWrapper.jsx";
+import Success from "./components/Success.jsx"; // adjust path as needed
+
+
 
 const App = () => {
   return (
@@ -27,8 +31,11 @@ const App = () => {
           <Route path="cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/payment" element={<Payment />} />
-        </Routes>
+          <Route path="/payment" element={<StripeWrapper><Payment /></StripeWrapper>} />
+          <Route path="/success" element={<Success />} />
+
+          
+          </Routes>
       </Router>
     </CartProvider>
   );

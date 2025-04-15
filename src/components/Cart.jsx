@@ -51,7 +51,7 @@ const Cart = () => {
         <div className="flex justify-center pb-10">
           <button
             onClick={() => navigate("/checkout")}
-            className="bg-black text-white px-5 py-3 h-12 w-32 rounded-lg flex items-center justify-center space-x-2 text-center cursor-pointer"
+            className="bg-black text-white px-5 py-3 h-12 w-32 rounded-lg flex items-center justify-center space-x-2 text-center hover:opacity-60 cursor-pointer"
           >
             check out
           </button>
@@ -183,7 +183,7 @@ const Cart = () => {
               <span>$ {total}</span>
               <button
                 onClick={() => navigate("/checkout")}
-                className="bg-black text-white px-10 py-3 text-base rounded-lg cursor-pointer font-normal"
+                className="bg-black text-white px-10 py-3 text-base rounded-lg cursor-pointer font-normal hover:opacity-60"
               >
                 check out
               </button>

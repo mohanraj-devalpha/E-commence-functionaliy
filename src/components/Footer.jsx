@@ -82,7 +82,7 @@ const Footer = () => {
 
             <button
               type="submit"
-              className="bg-slate-950 text-white px-5 py-1 h-10 w-32 rounded-lg hover:opacity-90"
+              className="bg-slate-950 text-white px-5 py-1 h-10 w-32 rounded-lg hover:opacity-60"
             >
               Subscribe
             </button>
