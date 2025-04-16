@@ -3,8 +3,6 @@ import axios from "axios";
 // import { BsChatLeftDots } from "react-icons/bs";
 import { TbMessageChatbotFilled } from "react-icons/tb";
 
-
-
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -24,7 +22,6 @@ const Chatbot = () => {
         role: "system",
         content: `introduce your name as Oasis .You are a helpful assistant for  furniture Home.you first greet and say converstion ending greetings when happen if the use asked aboved the items related questions try help him with specific items details which the user asked.
         if the user asked about the shipping duration or order days mentions it after the payment it will take 2-4 days the durations
-
         Here is the product list:
         [
           { id: 1, image: "item3", title: "Flower Vase", price: "$29.99", type: "Vases" },
@@ -47,6 +44,7 @@ const Chatbot = () => {
         if user asked about the payment details it should be in card only 
          try to manage the FAQ from the users 
          dont provide anyother info about other topics.
+        the Customer Number is "(406) 825-1934"
         
         `,
       };
@@ -63,11 +61,13 @@ const Chatbot = () => {
         {
           model: "llama3-70b-8192",
           messages: updatedMessages,
+          temperature: 1,
         },
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer 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", // Replace with your env var in prod
+            Authorization:
+              "Bearer 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", // Replace with your env var in prod
           },
         }
       );
@@ -86,9 +86,9 @@ const Chatbot = () => {
       {/* Toggle button */}
       <button
         onClick={() => setIsChatVisible(!isChatVisible)}
-        className="bg-blue-500 text-white p-3 rounded-full  shadow-xl text-xl"
+        className="bg-blue-500 text-white p-3 rounded-full  shadow-xl text-sm md:text-xl"
       >
-        {isChatVisible ? "Close Chat" : <  TbMessageChatbotFilled/>}
+        {isChatVisible ? "Close Chat" : <TbMessageChatbotFilled className=" text-sm md:text-3xl" />}
       </button>
 
       {/* Chatbox */}
@@ -104,7 +104,7 @@ const Chatbot = () => {
               .map((msg, i) => (
                 <div
                   key={i}
-                  className={`p-2 rounded-lg max-w-[80%] ${
+                  className={`p-2 rounded-lg max-w-[50%] ${
                     msg.role === "user"
                       ? "ml-auto bg-blue-100 text-right"
                       : "mr-auto bg-gray-100 text-left"
