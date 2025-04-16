@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef,useState, useEffect } from "react";
 import axios from "axios";
 // import { BsChatLeftDots } from "react-icons/bs";
 import { TbMessageChatbotFilled } from "react-icons/tb";
@@ -8,6 +8,12 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [isChatVisible, setIsChatVisible] = useState(false);
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading]);
+
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -67,7 +73,7 @@ const Chatbot = () => {
           headers: {
             "Content-Type": "application/json",
             Authorization:
-              "Bearer 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", 
+              "Bearer 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",
           },
         }
       );
@@ -88,7 +94,11 @@ const Chatbot = () => {
         onClick={() => setIsChatVisible(!isChatVisible)}
         className="bg-blue-500 text-white p-3 rounded-full  shadow-xl text-sm md:text-xl"
       >
-        {isChatVisible ? "Close Chat" : <TbMessageChatbotFilled className="md:text-3xl" />}
+        {isChatVisible ? (
+          "Close Chat"
+        ) : (
+          <TbMessageChatbotFilled className="md:text-3xl" />
+        )}
       </button>
 
       {/* Chatbox */}
@@ -104,16 +114,23 @@ const Chatbot = () => {
               .map((msg, i) => (
                 <div
                   key={i}
-                  className={`p-2 rounded-lg max-w-[70%] ${
-                    msg.role === "user"
-                      ? "ml-auto bg-blue-100 text-right"
-                      : "mr-auto bg-gray-100 text-left"
+                  className={`flex ${
+                    msg.role === "user" ? "justify-end" : "justify-start"
                   }`}
                 >
-                  {msg.content}
+                  <div
+                    className={`inline-block p-2 rounded-lg max-w-[80%] ${
+                      msg.role === "user"
+                        ? "bg-blue-100 text-right"
+                        : "bg-gray-100 text-left"
+                    }`}
+                  >
+                    {msg.content}
+                  </div>
                 </div>
               ))}
             {loading && <div className="text-gray-400">Typing...</div>}
+            <div ref={bottomRef} />
           </div>
 
           <div className="flex p-3 border-t gap-2 bg-white">
