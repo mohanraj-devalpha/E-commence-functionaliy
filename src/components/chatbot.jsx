@@ -88,7 +88,7 @@ const Chatbot = () => {
         onClick={() => setIsChatVisible(!isChatVisible)}
         className="bg-blue-500 text-white p-3 rounded-full  shadow-xl text-sm md:text-xl"
       >
-        {isChatVisible ? "Close Chat" : <TbMessageChatbotFilled className=" text-sm md:text-3xl" />}
+        {isChatVisible ? "Close Chat" : <TbMessageChatbotFilled className="md:text-3xl" />}
       </button>
 
       {/* Chatbox */}
