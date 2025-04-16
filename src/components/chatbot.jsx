@@ -67,7 +67,7 @@ const Chatbot = () => {
           headers: {
             "Content-Type": "application/json",
             Authorization:
-              "Bearer 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", // Replace with your env var in prod
+              "Bearer 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", 
           },
         }
       );
@@ -93,7 +93,7 @@ const Chatbot = () => {
 
       {/* Chatbox */}
       {isChatVisible && (
-        <div className="fixed bottom-20 right-4 sm:right-6 w-[90vw] max-w-md bg-white border rounded-lg shadow-xl flex flex-col h-[70vh] sm:h-[32rem]">
+        <div className="fixed bottom-20 right-4 sm:right-6 w-[90vw] max-w-md bg-white border rounded-lg shadow-2xl flex flex-col h-[70vh] sm:h-[32rem]">
           <div className="bg-blue-100 p-3 text-center font-semibold text-blue-700 rounded-t-lg">
             Oasis Chatbot
           </div>
@@ -104,7 +104,7 @@ const Chatbot = () => {
               .map((msg, i) => (
                 <div
                   key={i}
-                  className={`p-2 rounded-lg max-w-[50%] ${
+                  className={`p-2 rounded-lg max-w-[70%] ${
                     msg.role === "user"
                       ? "ml-auto bg-blue-100 text-right"
                       : "mr-auto bg-gray-100 text-left"
