@@ -26,7 +26,7 @@ const Chatbot = () => {
     if (messages.length === 0) {
       const systemMessage = {
         role: "system",
-        content: `introduce your name as Oasis .You are a helpful assistant for  furniture Home.you first greet and say converstion ending greetings when happen if the use asked aboved the items related questions try help him with specific items details which the user asked.
+        content: `introduce your name as Shopbot.You are a helpful assistant for  furniture Home.you first greet and say converstion ending greetings when happen if the use asked aboved the items related questions try help him with specific items details which the user asked.
         if the user asked about the shipping duration or order days mentions it after the payment it will take 2-4 days the durations
         Here is the product list:
         [
@@ -105,7 +105,7 @@ const Chatbot = () => {
       {isChatVisible && (
         <div className="fixed bottom-20 right-4 sm:right-6 w-[90vw] max-w-md bg-white border rounded-lg shadow-2xl flex flex-col h-[70vh] sm:h-[32rem]">
           <div className="bg-blue-100 p-3 text-center font-semibold text-blue-700 rounded-t-lg">
-            Oasis Chatbot
+            Shop Chatbot
           </div>
 
           <div className="flex-1 overflow-y-auto p-3 space-y-2 bg-white">
